@@ -5,8 +5,8 @@ import * as yup from 'yup';
 
 import HomePage from './Components/HomePage';
 import PizzaForm from './Components/PizzaForm';
-import Confirmation from './Components/Confirmation';
-import schema from './validation/schema';
+import Order from './Components/Order';
+// import schema from './validation/schema';
 
 const initialFormValues = {
   name: '',
@@ -51,11 +51,16 @@ const App = () => {
     .finally(() => setFormValues(initialFormValues))
   }
 
+  const inputChange = (name, value) => {
+    setFormValues({ ...formValues, [name]: value 
+    })
+  }
+
   const formSubmit = () => {
     const newOrder = {
-      name: '',
-      size: '',
-      special: '',
+      name: formValues.name.trim(),
+      size: formValues.size,
+      special: formValues.special.trim(),
       toppings: ['pepperoni', 'sausage', 'black olives', 'banana peppers', 'chicken', 'ham', 'pineapple'].filter(topping => !!formValues[topping])
     }
     postNewOrder(newOrder);
@@ -75,10 +80,16 @@ const App = () => {
 
       <Switch>
         <Route path='/pizza/confirmation'>
-          <Confirmation />
+          <Order details={pizzas}/>
         </Route>
         <Route path='/pizza'>
-          <PizzaForm />
+          <PizzaForm 
+          values={formValues}
+          change={inputChange}
+          submit={formSubmit}
+          errors={formErrors}
+          disabled={disabled}
+          />
         </Route>
         <Route path='/'>
           <HomePage />

@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function HomePage(){
-    const history = useHistory();
+    const history = useHistory()
 
     const routeToPizza = () => {
         history.push('/pizza');
