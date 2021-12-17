@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import Order from "./Order"; 
 
 export default function PizzaForm (props){
     const {
@@ -23,7 +21,7 @@ export default function PizzaForm (props){
     }
 
     return (
-            <form className='form container' onSubmit={onSubmit}>
+            <form id='pizza-form' className='form container' onSubmit={onSubmit}>
                 <div className='form'>
                     <div className='form-header'>
                     <h4>Build Your Own Pizza</h4>
@@ -34,6 +32,21 @@ export default function PizzaForm (props){
                     />
                     </div>
                 <h2>Build Your Own Pizza</h2>
+
+                <div className='name-title'>
+                    <h3>Name</h3>
+                    <div>{errors.name}</div>
+                </div>
+                <div className='name-text'>
+                    <input 
+                    id='name-input'
+                    type='text'
+                    name='name'
+                    placeholder='What is your name?'
+                    value={values.special}
+                    onChange={onChange}
+                    />
+                </div>
         
                 <div className='size-title'>
                     <h3>Choice of Size</h3>
@@ -41,6 +54,7 @@ export default function PizzaForm (props){
                 </div>
                 <div className='size-drop'>
                     <select
+                    id='size-dropdown'
                     onChange={onChange}
                     value={values.size}
                     name='size'
@@ -127,6 +141,7 @@ export default function PizzaForm (props){
                 </div>
                 <div className='special-text'>
                     <input 
+                    id='special-text'
                     type='text'
                     name='special instructions'
                     placeholder='Anything else you want to add?'
@@ -136,7 +151,7 @@ export default function PizzaForm (props){
                 </div>
         
                 <div className='submits'>
-                    <button id='orderAdd' disabled={disabled}>Add to Order</button>
+                    <button id='order-button' disabled={disabled}>Add to Order</button>
                 </div>
             </div>
         </form>
