@@ -14,7 +14,7 @@ export default function HomePage(){
         className='pizza-image'
         alt='This is a margherita pizza'
         />
-        <button onClick={routeToPizza} className='pizzaBtn'>Pizza?</button>
+        <button onClick={routeToPizza} id='order-pizza' className='pizzaBtn'>Pizza?</button>
         </div>
     )
 }

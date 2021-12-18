@@ -44,10 +44,6 @@ export default function App() {
     }).catch(err => console.log(err))
   }
 
-  useEffect(() => {
-    axios.get('https://reqres.in/api/orders').then(res => setOrders(res.data))
-  }, [formValues])
-
   const validate = (name, value) => {
     yup.reach(schema, name)
     .validate(value)
