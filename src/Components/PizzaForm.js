@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default function PizzaForm (props){
     const {
         values,
@@ -23,14 +24,6 @@ export default function PizzaForm (props){
     return (
             <form id='pizza-form' className='form container' onSubmit={onSubmit}>
                 <div className='form'>
-                    <div className='form-header'>
-                    <h4>Build Your Own Pizza</h4>
-                    <img
-                    className='pizza-image'
-                    src='..../assets.pizza.jpg'
-                    alt='This is a pizza'
-                    />
-                    </div>
                 <h2>Build Your Own Pizza</h2>
 
                 <div className='name-title'>
@@ -43,7 +36,7 @@ export default function PizzaForm (props){
                     type='text'
                     name='name'
                     placeholder='What is your name?'
-                    value={values.special}
+                    value={values.name}
                     onChange={onChange}
                     />
                 </div>
@@ -89,20 +82,20 @@ export default function PizzaForm (props){
                         />  
                     </label>
             
-                    <label>black olives
+                    <label>olives
                         <input 
                         type='checkbox'
-                        name='black olives'
-                        checked={values.blackOlives}
+                        name='olives'
+                        checked={values.olives}
                         onChange={onChange}
                         />  
                     </label>
             
-                    <label>banana peppers
+                    <label>peppers
                         <input 
                         type='checkbox'
-                        name='banana peppers'
-                        checked={values.bananaPeppers}
+                        name='peppers'
+                        checked={values.peppers}
                         onChange={onChange}
                         />  
                     </label>

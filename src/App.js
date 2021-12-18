@@ -13,8 +13,8 @@ const initialFormValues = {
   size: '',
   pepperoni: false,
   sausage: false,
-  blackOlives: false,
-  bananaPeppers: false,
+  olives: false,
+  peppers: false,
   chicken: false,
   ham: false,
   pineapple: false,
@@ -30,26 +30,23 @@ const initialFormErrors = {
 const initialOrders = []
 const initialDisabled = true;
 
-const App = () => {
+export default function App() {
   const [orders, setOrders] = useState(initialOrders);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  const getOrders = () => {
-    axios.get('https://reqres.in/api/orders')
+  const postNewOrder = newOrder => {
+    axios.post('https://reqres.in/api/orders', newOrder)
     .then(res => {
-      setOrders(res.data.data);
-    }).catch(err => console.error(err))
+      const orderFromServer = res.data;
+      setOrders([ orderFromServer, ...orders ]);
+    }).catch(err => console.log(err))
   }
 
-  const postNewOrder = newOrder => {
-    axios.post('https://reqres.in/api/orders')
-    .then(res => {
-      setOrders([res.data.data, ...orders ]);
-    }).catch(err => console.log(err))
-    .finally(() => setFormValues(initialFormValues))
-  }
+  useEffect(() => {
+    axios.get('https://reqres.in/api/orders').then(res => setOrders(res.data))
+  }, [formValues])
 
   const validate = (name, value) => {
     yup.reach(schema, name)
@@ -66,17 +63,13 @@ const App = () => {
 
   const formSubmit = () => {
     const newOrder = {
-      name: formValues.name.trim(),
+      name: formValues.name,
       size: formValues.size,
-      special: formValues.special.trim(),
+      special: formValues.special,
       toppings: ['pepperoni', 'sausage', 'black olives', 'banana peppers', 'chicken', 'ham', 'pineapple'].filter(topping => !!formValues[topping])
     }
     postNewOrder(newOrder);
   }
-
-  useEffect(() => {
-    getOrders()
-  }, [])
 
   useEffect(() => {
     schema.isValid(formValues).then(valid => setDisabled(!valid))
@@ -93,7 +86,7 @@ const App = () => {
 
         <Switch>
           <Route path='/pizza/confirmation'>
-            <Order details={orders}/>
+            <Order details={orders}/>      
           </Route>
           <Route path='/pizza'>
             <PizzaForm 
@@ -103,15 +96,6 @@ const App = () => {
             errors={formErrors}
             disabled={disabled}
             />
-
-            {
-              orders.map(order => {
-                return (
-                  <Order key={order.id} details={order} />
-                )
-              })
-            }
-
           </Route>
           <Route path='/'>
             <HomePage />
@@ -119,6 +103,5 @@ const App = () => {
         </Switch>
       </div>
     </>
-  );
-};
-export default App;
+  )
+}

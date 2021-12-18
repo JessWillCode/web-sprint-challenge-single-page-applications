@@ -1,13 +1,83 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #ff8c00;
+  font-family: "Comfortaa", serif;
+}
+
+h1,
+h2 {
+  color: #9370db;
+  text-align: center;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.home {
+  width: 100%;
+  height: 40vh;
+  background-image: url("https://media.istockphoto.com/photos/fresh-homemade-pizza-margherita-picture-id1278998606?b=1&k=20&m=1278998606&s=170667a&w=0&h=BlXvVFfwLwD4ckIF_7sg_mis8ULaqy9sdPgA6grpSo4=");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.pizzaBtn {
+  margin-right: 2%;
+}
+
+.container {
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+  margin: 16px 8px;
+  padding: 16px;
+  background-color: #ffe4b5;
+}
+
+.container.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.password {
+  margin-right: 5%;
+}
+
+.name {
+  margin-right: 0.5%;
+}
+
+.submits {
+  margin: 1%;
+}
+
+button {
+  width: 30%;
+  padding: 2%;
+  color: black;
+  background-color: #ff4500;
+}
+
+input {
+  margin-left: 3%;
+}
+
+.form,
+.user {
+  padding: 0 24px 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

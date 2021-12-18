@@ -8,12 +8,11 @@ const schema = yup.object().shape({
         .min(2, 'name must be at least 2 characters'),
     size: yup
         .string()
-        .required()
         .oneOf(['small', 'medium', 'large'], 'must choose a size!'),
     pepperoni: yup.boolean(),
     sausage: yup.boolean(),
-    blackOlives: yup.boolean(),
-    bananaPeppers: yup.boolean(),
+    olives: yup.boolean(),
+    peppers: yup.boolean(),
     chicken: yup.boolean(),
     ham: yup.boolean(),
     pineapple: yup.boolean(),

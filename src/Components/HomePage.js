@@ -10,12 +10,11 @@ export default function HomePage(){
 
     return (
         <div className='home container'>
-            <img 
-            className='pizza-image'
-            src='./Pizza.jpg'
-            alt='This is a pizza'
-            />
-            <button onClick={routeToPizza} className='pizzaBtn'>Pizza?</button>
+        <div 
+        className='pizza-image'
+        alt='This is a margherita pizza'
+        />
+        <button onClick={routeToPizza} className='pizzaBtn'>Pizza?</button>
         </div>
     )
 }
